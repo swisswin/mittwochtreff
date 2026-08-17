@@ -18,7 +18,25 @@ body{
   margin:0;
   color:var(--text);
   background:
-    linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)), url('background.png') center/cover no-repeat fixed;
+    linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)), url('bg-2000.webp') center/cover no-repeat fixed;
+}
+
+/* responsive friendly: use smaller images & disable fixed on mobile */
+@media (max-width:1200px){
+  body{
+    background-image: url('bg-1200.webp');
+  }
+}
+@media (max-width:720px){
+  body{
+    background-image: url('bg-800.webp');
+    background-attachment: scroll;
+    background-position: center top;
+  }
+  .hero .container{ padding:1.25rem; }
+  .contact-form input,
+  .contact-form textarea,
+  .btn{ min-height:44px;font-size:1rem;width:100%;box-sizing:border-box }
 }
 
 /* center layout */
