@@ -1,0 +1,211 @@
+:root{
+  --bg:#f0f4f8;
+  --card:rgba(255,255,255,0.85);
+  --text:#1b1b1f;
+  --muted:#6b7280;
+  --accent:#1f7bed;
+  --radius:12px;
+  --max-w:1000px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Full-page background with a subtle gradient overlay.
+   Replace the URL below with any image you prefer. */
+html,body{
+  height:100%;
+}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)), url('background.png') center/cover no-repeat fixed;
+}
+
+/* center layout */
+.container{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:1.25rem;
+}
+
+/* header */
+.site-header{
+  background:#F08411;
+  color:#ffffff;
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(2,6,23,0.12);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* brand / logo */
+.brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit; }
+
+/* wrapper around the SVG to provide optional contrasting ring */
+.logo-wrap{
+  width:48px;
+  height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 48px;
+}
+.logo-svg{
+  width:40px;
+  height:40px;
+  display:block;
+}
+
+/* contrasting circular background (use the class .logo-contrasting on .logo-wrap to enable) */
+.logo-contrasting {
+  padding:6px;
+  background:rgba(255,255,255,0.85);
+  border-radius:50%;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* site title: uses the Earth & green palette (overrides header's white color for the text label) */
+.site-title{
+  font-size:1rem;
+  font-weight:600;
+  color:#2B8A2B;
+  margin-left:.25rem;
+}
+
+/* when viewport is small, show only the icon */
+@media (max-width:520px){
+  .site-title{ display:none; }
+  .logo-wrap{ width:40px; height:40px; }
+  .logo-svg{ width:32px; height:32px; }
+}
+
+.nav a{
+  color:#ffffff;
+  text-decoration:none;
+  margin-left:1rem;
+  font-weight:500;
+}
+.nav a:hover{opacity:.85}
+
+/* hero uses translucent card so background shows through */
+.hero{
+  padding:3.5rem 0;
+}
+.hero .container{
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.80));
+  border-radius:var(--radius);
+  padding:2rem;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.24);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.lead{color:var(--muted);margin-top:.25rem}
+
+/* sections are translucent cards with soft blur to separate from background */
+.section{
+  margin:2rem auto;
+  padding:1.25rem;
+  background: var(--card);
+  border-radius:12px;
+  box-shadow:0 8px 22px rgba(2,6,23,0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.45);
+}
+
+.highlights{display:flex;gap:1rem;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.highlights li{background:rgba(241,245,249,0.8);padding:.5rem .75rem;border-radius:8px;font-weight:500;color:var(--muted)}
+
+.events-list{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+.events-list li{padding:.75rem;border-radius:8px;background:rgba(255,255,255,0.65);border:1px solid rgba(14,42,80,0.04)}
+
+/* --- Events calendar --- */
+.cal{
+  background:rgba(255,255,255,0.7);
+  border-radius:10px;
+  border:1px solid rgba(14,42,80,0.05);
+  overflow:hidden;
+  margin-bottom:1.25rem;
+}
+.cal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1rem;
+  background:linear-gradient(90deg, rgba(149,214,169,0.35), rgba(31,123,237,0.12));
+}
+.cal-head h4{margin:0;font-size:1rem;color:var(--text)}
+.cal-nav{display:flex;gap:.4rem}
+.cal-nav button{
+  width:28px;height:28px;
+  border-radius:6px;border:1px solid rgba(14,42,80,0.08);
+  background:rgba(255,255,255,0.9);
+  color:var(--text);cursor:pointer;font-size:.9rem;line-height:1;
+}
+.cal-nav button:hover{background:#fff}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-grid .dow{
+  padding:.4rem 0;text-align:center;font-size:.72rem;font-weight:600;
+  color:var(--muted);text-transform:uppercase;letter-spacing:.03em;
+  border-bottom:1px solid rgba(14,42,80,0.06);
+}
+.cal-cell{
+  min-height:64px;padding:.35rem;font-size:.8rem;
+  border-right:1px solid rgba(14,42,80,0.05);
+  border-bottom:1px solid rgba(14,42,80,0.05);
+}
+.cal-cell:nth-child(7n){border-right:none}
+.cal-cell.empty{background:rgba(240,244,248,0.4)}
+.cal-cell .d{color:var(--muted);font-size:.72rem}
+.cal-cell.today .d{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--accent);color:#fff;
+}
+.cal-evt{
+  margin-top:.25rem;padding:.15rem .35rem;font-size:.68rem;line-height:1.2;
+  background:rgba(149,214,169,0.45);border-left:2px solid #2B8A2B;
+  border-radius:3px;color:var(--text);
+}
+@media (max-width:520px){
+  .cal-cell{min-height:44px;font-size:.7rem}
+  .cal-evt{display:none} /* dots kept simple on very small screens; agenda list below still shows all details */
+  .cal-cell.has-evt .d::after{
+    content:"";display:block;width:4px;height:4px;border-radius:50%;
+    background:#2B8A2B;margin:2px auto 0;
+  }
+}
+
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+
+.contact-form{display:grid;gap:.75rem;max-width:600px}
+.contact-form label{display:flex;flex-direction:column;font-weight:600}
+.contact-form input,
+.contact-form textarea{
+  margin-top:.35rem;padding:.6rem .7rem;border-radius:8px;border:1px solid rgba(14,42,80,0.06);background:rgba(255,255,255,0.95);
+}
+
+.btn{
+  display:inline-block;padding:.6rem .9rem;border-radius:8px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);cursor:pointer;
+}
+.btn.primary{background:var(--accent);color:white;border:none;box-shadow:0 6px 14px rgba(31,123,237,0.18)}
+
+.site-footer{
+  padding:1rem 0;color:var(--muted);text-align:center;
+  /* slightly translucent footer */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+/* responsiveness */
+@media (max-width:720px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .nav{display:flex;gap:.5rem;flex-wrap:wrap}
+  .highlights{flex-direction:column}
+}
