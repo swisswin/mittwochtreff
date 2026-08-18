@@ -14,24 +14,42 @@
 html,body{
   height:100%;
 }
+
+/* responsive friendly: use smaller images & disable fixed on mobile */
+/* Layer order: gradient, webp (if present), fallback PNG */
 body{
   margin:0;
   color:var(--text);
-  background:
-    linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)), url('bg-2000.webp') center/cover no-repeat fixed;
+  background-image:
+    linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)),
+    url('bg-2000.webp'),
+    url('background.png');
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  /* keep fixed on desktop for parallax-like look */
+  background-attachment: fixed, fixed, scroll;
 }
 
-/* responsive friendly: use smaller images & disable fixed on mobile */
+/* tablet */
 @media (max-width:1200px){
   body{
-    background-image: url('bg-1200.webp');
+    background-image:
+      linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)),
+      url('bg-1200.webp'),
+      url('background.png');
   }
 }
+
+/* mobile: use smaller image + disable fixed attachment for performance */
 @media (max-width:720px){
   body{
-    background-image: url('bg-800.webp');
-    background-attachment: scroll;
-    background-position: center top;
+    background-image:
+      linear-gradient(180deg, rgba(240,244,248,0.30), rgba(240,244,248,0.50)),
+      url('bg-800.webp'),
+      url('background.png');
+    background-attachment: scroll, scroll, scroll;
+    background-position: center top, center top, center top;
   }
   .hero .container{ padding:1.25rem; }
   .contact-form input,
