@@ -1,0 +1,23 @@
+Thanks — nice work on the mobile CSS and the conversion helper. A few concrete items to address before merging:
+
+1. Include the generated WebP assets in this branch (or as a follow-up commit).
+   - styles.css references bg-2000.webp / bg-1200.webp / bg-800.webp. While background.png is a fallback, reviewers and CI should be able to test with the actual WebP files in the branch.
+
+2. Document the image-generation step and dependency in README (scripts/convert-images.sh requires cwebp).
+   - Suggested text and command to add:
+     ```bash
+     # generate optimized WebP variants (requires cwebp)
+     chmod +x scripts/convert-images.sh
+     ./scripts/convert-images.sh background.png
+     ```
+   - Add a one-line note that cwebp (libwebp) is required.
+
+3. Background-attachment consistency
+   - Consider setting desktop attachments uniformly (e.g. `background-attachment: fixed, fixed, fixed;`) instead of mixing attachment values across layers. Mixed values can produce inconsistent behavior if a browser loads only some layers. Alternatively, use `scroll` for all layers to avoid parallax on devices that perform poorly with `fixed`.
+
+4. Repo size & hosting
+   - If the generated images are large, consider resizing/adjusting quality or using Git LFS if you intend to keep multiple large assets in the repo.
+
+If you prefer, I can:
+- add the WebP files to this branch if you upload them here, or
+- add the README notes and a tiny tweak to the attachment values in a follow-up commit.
