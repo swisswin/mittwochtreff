@@ -104,7 +104,7 @@
         Werde Mitglied, um unsere Arbeit zu unterstützen und Zugang zu exklusiven Veranstaltungen zu erhalten. Beitrag: min. 1 Bier.
       </p>
       <p>
-        <a class="btn primary" href="mailto:info@example.org?subject=Mitgliedschaft%20Anfrage">Kontakt um beizutreten</a>
+        <a class="btn primary" href="mailto:info@mittwochtreff.ch?subject=Mitgliedschaft%20Anfrage">Kontakt um beizutreten</a>
       </p>
     </section>
 
@@ -281,11 +281,11 @@
       const name = encodeURIComponent(f.name.value.trim());
       const email = encodeURIComponent(f.email.value.trim());
       const message = encodeURIComponent(f.message.value.trim());
-      const mailto = `mailto:info@example.org?subject=Kontakt%20von%20${name}&body=Von:%20${name}%20(%20${email}%20)%0D%0A%0D%0A${message}`;
+      const mailto = `mailto:info@mittwochtreff.ch?subject=Kontakt%20von%20${name}&body=Von:%20${name}%20(%20${email}%20)%0D%0A%0D%0A${message}`;
       // Try to open mailto
       window.location.href = mailto;
       const status = document.getElementById('formStatus');
-      status.textContent = 'Ihr E-Mail-Client sollte sich öffnen — falls nicht, kontaktieren Sie uns unter info@example.org';
+      status.textContent = 'Ihr E-Mail-Client sollte sich öffnen — falls nicht, kontaktieren Sie uns unter info@mittwochtreff.ch';
     }
 
     // Set current year
