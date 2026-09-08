@@ -140,8 +140,8 @@ body{
   border-radius:var(--radius);
   padding:2rem;
   box-shadow: 0 10px 30px rgba(2,6,23,0.24);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 .lead{color:var(--muted);margin-top:.25rem}
 
